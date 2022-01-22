@@ -27,6 +27,11 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
 @Alina.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
+    chat_id = message.from_user.id
+    if not await db.is_user_exist(chat_id):
+        data = await client.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
     
     text = message.text
     if len(text)>7:

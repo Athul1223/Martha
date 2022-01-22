@@ -9,7 +9,7 @@ from bot import Alina
 from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, DB_URL, SESSION
 from helper_func import subscribed, encode, decode, get_messages
 from Database.Database import db
-from plugins.Broadcast.Broadcast import broadcast
+from plugins.Broadcast import broadcast
 
 
 

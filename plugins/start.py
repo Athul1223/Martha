@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Alina
-from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, BROADCAST
+from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
 from helper_func import subscribed, encode, decode, get_messages
 from Database import Database
 from plugins.Broadcast import broadcast
@@ -140,4 +140,25 @@ async def not_joined(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(buttons),
         quote = True,
         disable_web_page_preview = True
+    )
+
+@Alina.on_message(filters.private & filters.command("broadcast"))
+async def broadcast_handler_open(_, m):
+    if m.from_user.id not in ADMINS:
+        await m.delete()
+        return
+    if m.reply_to_message is None:
+        await m.delete()
+    else:
+        await broadcast(m, db)
+
+@Alina.on_message(filters.private & filters.command("users"))
+async def sts(c, m):
+    if m.from_user.id not in ADMINS:
+        await m.delete()
+        return
+    await m.reply_text(
+        text=f"**Total subscribers:** `{await db.total_users_count()}`\n\n**Users:** `{await db.total_notif_users_count()}` \n **Blocked/deleted :** `{await db.total_users_count() - await db.total_notif_users_count()}`",
+        parse_mode="Markdown",
+        quote=True
     )

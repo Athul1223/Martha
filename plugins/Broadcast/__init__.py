@@ -1,1 +1,1 @@
-from .Broadcast import broadcast
+from plugins.Broadcast import broadcast

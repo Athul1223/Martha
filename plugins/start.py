@@ -11,6 +11,8 @@ from helper_func import subscribed, encode, decode, get_messages
 from Database import Database
 from plugins.Broadcast import broadcast
 
+db = Database(DB_URL, SESSION)
+
 #=====================================================================================##
 
 

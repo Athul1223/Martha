@@ -1,5 +1,5 @@
 import datetime
-
+from config import DB_URL, SESSION
 import motor.motor_asyncio
 
 class Database:
@@ -54,3 +54,5 @@ class Database:
     async def total_notif_users_count(self):
         count = await self.col.count_documents({"notif": True})
         return count
+
+db = Database(DB_URL, SESSION)

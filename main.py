@@ -1,3 +1,3 @@
-from bot import Bot
+from bot import Alina
 
-Bot().run()
+Alina().run()

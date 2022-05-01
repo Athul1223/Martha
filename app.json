@@ -1,13 +1,13 @@
 {
-  "name": "Alina_starkov Bot",
-  "description": "alina_starkov bot store posts and it can access by special links",
+  "name": "TG File Share/Sharing Bot",
+  "description": "file sharing bot store posts and it can access by special links",
   "keywords": [
     "telegram",
-    "Alina",
-    "Starkov"
+    "file",
+    "sharing"
   ],
-  "repository": "https://github.com/Athul1223/Alina_starkov",
-  "logo": "https://telegra.ph/file/e01bf724a1407b6339871.jpg",
+  "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
+  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
@@ -37,15 +37,6 @@
       "description": "Optional: start message of bot, use HTML parsemode format",
       "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
     },
-    "DB_URL": {
-      "description": "mongoDB URI. Get this value from https://www.mongodb.com. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
-      "value": ""
-    },
-    "BROADCAST": {
-      "description": "Value should be True or False. Broadcast with Forward Tag or as Copy.(Without Forward Tag)",
-      "value": "True",
-      "required": false
-    },
     "FORCE_SUB_MESSAGE": {
       "description": "Optional: Force Sub message of bot, use HTML parsemode format",
       "value": "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
@@ -54,9 +45,21 @@
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
       "required": false
+    },
+    "PROTECT_CONTENT": {
+      "description": "Protect contents from getting forwarded",
+      "value": "False",
+      "required": false
     }
   },
-
+  "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
   "buildpacks": [
     {
       "url": "heroku/python"

@@ -1,9 +1,7 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-from os import environ
 
-SESSION = environ.get('SESSION', 'file_share')
 #Bot token @Botfather
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 
@@ -19,9 +17,8 @@ CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 
-#Broadcast
-BROADCAST_AS_COPY = bool(environ.get("BROADCAST", True))
-DB_URL = os.environ.get("DB_URL", "")
+#Database 
+DB_URI = os.environ.get("DATABASE_URL", "")
 
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
@@ -41,7 +38,10 @@ except ValueError:
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>")
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<code>{previouscaption}</code> \n\n\n<a href='https://t.me/InfameSeries'>ιиƒαмє ѕєяιєѕ</a>")
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
+
+#set True if you want to prevent users from forwarding files from bot
+PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
 #Set true if you want Disable your Channel Posts Share button
 if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':

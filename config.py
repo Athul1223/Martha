@@ -1,6 +1,9 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
+from os import environ
+
+SESSION = environ.get('SESSION', 'file_share')
 
 #Bot token @Botfather
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
@@ -16,6 +19,10 @@ CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
+
+#broadcast
+BROADCAST_AS_COPY = bool(environ.get("BROADCAST", True))
+DB_URL = os.environ.get("DB_URL", "")
 
 #Database 
 DB_URI = os.environ.get("DATABASE_URL", "")

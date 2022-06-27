@@ -46,6 +46,11 @@
       "value": "",
       "required": false
     },
+    "DISABLE_CHANNEL_BUTTON": {
+      "description": "Protect contents from getting forwarded",
+      "value": "True",
+      "required": false
+    },
     "PROTECT_CONTENT": {
       "description": "Protect contents from getting forwarded",
       "value": "False",
